@@ -17,8 +17,35 @@ Cart.prototype.addItem = function(product, quantity) {
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+ var items = event.target.items.value;
+var quantity= event.target.quantity.value;
 
+  var itemsEmptArr = [];
+  var quantityEmptArr = [];
+
+  if(!localStorage.getItem('items')){
+    itemsEmptArr.push(items);
+    localStorage.setItem('items', JSON.stringify(itemsEmptArr));
+  }
+  else {
+    var temp = JSON.parse(localStorage.getItem('items'));
+    temp.push(items);
+    localStorage.setItem('items', JSON.stringify(temp));
+  }
+
+
+  if(!localStorage.getItem('quantity')){
+    quantityEmptArr.push(quantity);
+    localStorage.setItem('quantity', JSON.stringify(quantityEmptArr));
+  }
+  else {
+    var temp1 = JSON.parse(localStorage.getItem('quantity'));
+temp1.push(quantity);
+localStorage.setItem('quantity', JSON.stringify(temp1));    
+
+  }
 };
+
 
 Cart.prototype.removeItem = function(item) {
   // TODO: Fill in this instance method to remove one item from the cart.
@@ -72,4 +99,3 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
-console.log(Product.allProducts);
