@@ -1,6 +1,8 @@
 'use strict';
 
 var catalog = document.getElementById('catalog');
+var testArr = [];
+
 // Cart constructor.
 var Cart = function(items) {
   // this.items is an array of CartItem instances.
@@ -9,33 +11,26 @@ var Cart = function(items) {
 
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  // this.items = testArr;
+  console.log(this.items);
 };
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+
 };
 
 Cart.prototype.removeItem = function(item) {
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
 };
-var testArr = [];
 
 var CartItem = function(product, quantity) {
   this.product = product;
   this.quantity = quantity;
   testArr.push(this);
 };
-function newCartItem(event) {
-  event.preventDefault();
-  var itemName = event.target.items.value;
-  var itemQuantity = event.target.quantity.value;
-  
-  new CartItem (itemName, itemQuantity);
-  
-  console.log(testArr);
-  catalog.reset();
-}
+
 
 // Product contructor.
 var Product = function(filePath, name) {
@@ -50,15 +45,7 @@ function generateDropdown() {
     emptyArr.push(Product.allProducts[i].name);
   }
 }
-function dropdown() {
-  var items = document.getElementById('items')
-  for(var i = 0; i < Product.allProducts.length; i++) {
-    var option = document.createElement('option');
-    option.value = Product.allProducts[i].name;
-    option.textContent = Product.allProducts[i].name;
-    items.appendChild(option);
-  }
-}
+
 
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
@@ -86,7 +73,3 @@ function generateCatalog() {
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
 console.log(Product.allProducts);
-generateDropdown();
-console.log(emptyArr);
-dropdown();
-catalog.addEventListener('submit', newCartItem);
