@@ -27,14 +27,16 @@ function handleSubmit(event) {
  
   // Do all the things ...
   cart.saveToLocalStorage();
-  // updateCounter();
+  updateCounter();
   // updateCartPreview();
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {
+// function updateCounter() {
+//   var itemCount = document.getElementById('itemCount');
+//   itemCount.textContent = 
 
-}
+// }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
